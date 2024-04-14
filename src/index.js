@@ -15,6 +15,7 @@ import notFound from "./middleware/notFound.js";
 /** IMPORT: ROUTE */
 import authRoute from "./routes/authRoute.js";
 import userRoute from "./routes/userRoute.js";
+import productRoute from "./routes/productRoute.js";
 
 /** APP CONFIG */
 dotenv.config();
@@ -30,6 +31,7 @@ app.use(cors());
 app.get("/", (req, res) => res.send(req.signedCookies));
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
+app.use("/api/products", productRoute);
 
 /** POST MIDDLEWARE */
 app.use(notFound);
