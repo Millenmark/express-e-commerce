@@ -39,8 +39,8 @@ const ProductSchema = new Schema(
       },
     },
     colors: {
-      type: String,
-      required: [true, "Color is required"],
+      type: [String],
+      default: ["#222"],
     },
     isFeatured: {
       type: Boolean,
