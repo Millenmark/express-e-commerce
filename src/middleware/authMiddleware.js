@@ -5,8 +5,6 @@ import { isTokenValid } from "../utils/jwt.js";
 export const verifyToken = async (req, res, next) => {
   const { token } = req.signedCookies;
 
-  console.log(req.ip);
-
   if (!token) {
     return res
       .status(403)
