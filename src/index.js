@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
+import fileUpload from "express-fileupload";
+import { v2 as cloudinary } from "cloudinary";
 
 /** IMPORT: CUSTOM MODULE */
 import connectDB from "./config/connectDB.js";
@@ -25,6 +27,13 @@ app.use(morgan("tiny"));
 app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 app.use(cors());
+app.use(fileUpload({ useTempFiles: true }));
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET,
+});
 
 /** ROUTES */
 // app.get("/", (req, res) => res.send(req.cookies)); // if the cookie not signed
